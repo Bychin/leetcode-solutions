@@ -17,12 +17,7 @@ func topKFrequent(nums []int, k int) []int {
 			maxCount = topsByNum[n]
 		}
 
-		sameCount := topsByCount[topsByNum[n]]
-		if sameCount == nil {
-			sameCount = make([]int, 0, 1)
-		}
-
-		topsByCount[topsByNum[n]] = append(sameCount, n)
+		topsByCount[topsByNum[n]] = append(topsByCount[topsByNum[n]], n)
 	}
 
 	tops := make(map[int]struct{}, k)

@@ -12,5 +12,5 @@ The primary purpose of this repository is to serve as a personal coding journal,
 ### 1. /problems
 The "problems" directory contains subdirectories for each LeetCode problem I have attempted. Each problem directory name pattern is: `ID_problem-name`, where `ID` is a problem ID and `problem-name` is a part of corresponding URL to a problem (`https://leetcode.com/problems/problem-name/`).
 
-### 2. /utilities
-The "utilities" directory contains any custom utility functions or data structures that I find useful while solving LeetCode problems. These utilities aid in code reusability and make the solutions more concise and maintainable.
+### 2. /utils
+The "utils" directory contains any custom utility functions or data structures that I find useful while solving LeetCode problems. These utilities aid in code reusability and make the solutions more concise and maintainable.
