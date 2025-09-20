@@ -1,3 +1,3 @@
 module github.com/Bychin/leetcode-solutions
 
-go 1.20
+go 1.25
