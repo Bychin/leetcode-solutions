@@ -49,6 +49,38 @@ func topKFrequent(nums []int, k int) []int {
 	return res
 }
 
+func topKFrequentUsingBucketSort(nums []int, k int) []int {
+	counts := map[int]int{}
+	maxCount := 0 // it is always <= len(nums)
+
+	for _, n := range nums {
+		counts[n] += 1
+		maxCount = max(maxCount, counts[n])
+	}
+
+	buckets := make([][]int, maxCount+1)
+	for n, count := range counts {
+		buckets[count] = append(buckets[count], n)
+	}
+
+	result := []int{}
+	for i := maxCount; i > 0 && k > 0; i-- {
+		ns := buckets[i]
+		for j := 0; j < len(ns) && k > 0; j++ {
+			result = append(result, ns[j])
+			k--
+		}
+	}
+
+	return result
+}
+
 func main() {
-	fmt.Println(topKFrequent([]int{1, 1, 1, 2, 2, 3}, 2))
+	fmt.Println(topKFrequent([]int{1, 1, 1, 2, 2, 3}, 2))             // [1,2]
+	fmt.Println(topKFrequent([]int{1}, 1))                            // [1]
+	fmt.Println(topKFrequent([]int{1, 2, 1, 2, 1, 2, 3, 1, 3, 2}, 2)) // [1,2]
+
+	fmt.Println(topKFrequentUsingBucketSort([]int{1, 1, 1, 2, 2, 3}, 2))             // [1,2]
+	fmt.Println(topKFrequentUsingBucketSort([]int{1}, 1))                            // [1]
+	fmt.Println(topKFrequentUsingBucketSort([]int{1, 2, 1, 2, 1, 2, 3, 1, 3, 2}, 2)) // [1,2]
 }
